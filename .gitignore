@@ -5,6 +5,9 @@
 
 # Custom file exclusions
 appsettings.json
+API/reactivities.db
+API/reactivities.db-shm
+API/reactivities.db-wal
 
 # User-specific files
 *.rsuser
