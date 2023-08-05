@@ -6,16 +6,32 @@ import ActivityForm from '../form/ActivityForm';
 
 interface Props {
   activities: Activity[];
+  selectedActivity: Activity | undefined;
+  handleSelectActivity: (id: string) => void;
+  cancelSelectActivity: () => void;
 }
 
-export default function ActivityDashboard({ activities }: Props) {
+export default function ActivityDashboard({
+  activities,
+  selectedActivity,
+  handleSelectActivity,
+  cancelSelectActivity,
+}: Props) {
   return (
     <Grid>
       <Grid.Column width='10'>
-        <ActivityList activities={activities} />
+        <ActivityList
+          activities={activities}
+          handleSelectActivity={handleSelectActivity}
+        />
       </Grid.Column>
       <Grid.Column width='6'>
-        {activities[0] && <ActivityDetails activity={activities[0]} />}
+        {selectedActivity && (
+          <ActivityDetails
+            activity={selectedActivity}
+            cancelSelectActivity={cancelSelectActivity}
+          />
+        )}
         <ActivityForm />
       </Grid.Column>
     </Grid>
